@@ -127,10 +127,7 @@ public class BinaryTree<T> :
 	}
 
 	#region PreOrderTraversal
-	public void PreOrderTraversal(Action<T> process)
-	{
-		PreOrderTraversal(process, _root);
-	}
+	public void PreOrderTraversal(Action<T> process) => PreOrderTraversal(process, _root);
 
 	private void PreOrderTraversal(Action<T> process, BinaryTreeNode<T>? node)
 	{
