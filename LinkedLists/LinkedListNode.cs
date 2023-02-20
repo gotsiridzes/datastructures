@@ -1,4 +1,4 @@
-﻿namespace LinkedLists;
+﻿namespace LinkedList;
 
 public class LinkedListNode<T>
 {
