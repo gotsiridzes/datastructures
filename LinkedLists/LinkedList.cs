@@ -85,6 +85,52 @@ public class LinkedList<T> : IEnumerable<T>
 		}
 	}
 
+	public bool Contains(T val)
+	{
+		var current = Head;
+		while (current != null)
+		{
+			if (current.Value!.Equals(val)) return true;
+			current = current.Next;
+		}
+
+		return false;
+	}
+
+	public bool Remove(T item)
+	{
+		// 1. empty list - do nothing
+		// 2. single node - 
+		// 3. many nodes
+		//   1 - node to remove is the first element
+		//   2 - node to remove is middle or last
+
+		LinkedListNode<T> previous = null;
+		var current = Head;
+
+		while (current != null)
+		{
+			if (current.Value!.Equals(item))
+			{
+				if (previous == null) RemoveFirst(); // 2. single node case or 3.1 - node to remove is the first one
+				else
+				{
+					// 3.2 middle or last
+					previous.Next = current.Next;
+					if (current.Next == null) Tail = previous;
+					Count--;
+				}
+
+				return true;
+			}
+
+			previous = current;
+			current = current.Next;
+		}
+
+		return false; // 1. empty list
+	}
+
 	public IEnumerator<T> GetEnumerator()
 	{
 		if (Count != 0)
