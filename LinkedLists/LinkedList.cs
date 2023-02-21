@@ -131,6 +131,13 @@ public class LinkedList<T> : IEnumerable<T>
 		return false; // 1. empty list
 	}
 
+	public void Clear()
+	{
+		Head = null;
+		Tail = null;
+		Count = 0;
+	}
+
 	public IEnumerator<T> GetEnumerator()
 	{
 		if (Count != 0)
