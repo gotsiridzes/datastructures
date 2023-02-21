@@ -2,12 +2,9 @@
 
 public class LinkedListNode<T>
 {
-	public LinkedListNode(T? value)
-	{
-		Value = value;
-	}
+	public LinkedListNode(T? value) => Value = value;
 
-	public T? Value { get; init; }
+	public T? Value { get; private set; }
 
 	public LinkedListNode<T>? Next { get; set; }
 }
