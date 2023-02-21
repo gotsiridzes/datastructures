@@ -68,8 +68,18 @@ public class LinkedList<T>
 				current.Next = null;
 				Tail = current;
 			}
-		}
 
-		Count--;
+			Count--;
+		}
+	}
+
+	public void RemoveFirst()
+	{
+		if (Count != 0)
+		{
+			Head = Head?.Next;
+			Count--;
+			if (Count == 0) Tail = null;
+		}
 	}
 }

@@ -21,4 +21,41 @@ public class RemoveTest
 		Assert.Null(list.Tail);
 		Assert.Null(list.Head);
 	}
+
+	[Fact]
+	public void RemoveFirstLast_Empty_Lists()
+	{
+		LinkedList<int> list = new LinkedList<int>();
+		Assert.Equal(0, list.Count);
+		Assert.Null(list.Head);
+		Assert.Null(list.Tail);
+
+		list.RemoveFirst();
+		Assert.Equal(0, list.Count);
+		Assert.Null(list.Head);
+		Assert.Null(list.Tail);
+
+		list.RemoveLast();
+		Assert.Equal(0, list.Count);
+		Assert.Null(list.Head);
+		Assert.Null(list.Tail);
+	}
+
+	[Fact]
+	public void RemoveFirstLast_One_Node()
+	{
+		LinkedList<int> list = new LinkedList<int>();
+
+		list.AddFirst(10);
+		list.RemoveFirst();
+		Assert.Equal(0, list.Count);
+		Assert.Null(list.Head);
+		Assert.Null(list.Tail);
+
+		list.AddFirst(10);
+		list.RemoveLast();
+		Assert.Equal(0, list.Count);
+		Assert.Null(list.Head);
+		Assert.Null(list.Tail);
+	}
 }
