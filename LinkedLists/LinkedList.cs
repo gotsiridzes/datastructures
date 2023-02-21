@@ -15,13 +15,13 @@ public class LinkedList<T>
 	/// Last node of singly linked list, null if list is empty
 	/// </summary>
 	public LinkedListNode<T>? Tail { get; private set; }
-	
+
 	/// <summary>
 	/// Number of elements in list
 	/// </summary>
 	public int Count { get; private set; }
 
-	public void AddFirst(T val) => AddFirst(new LinkedList.LinkedListNode<T>(val));
+	public void AddFirst(T val) => AddFirst(new LinkedListNode<T>(val));
 
 	/// <summary>
 	/// Add node as start element of the list
@@ -49,5 +49,27 @@ public class LinkedList<T>
 
 		Count++;
 		Tail = node;
+	}
+
+	public void RemoveLast()
+	{
+		if (Count != 0)
+		{
+			if (Count == 1)
+			{
+				Head = null;
+				Tail = null;
+			}
+			else
+			{
+				var current = Head;
+				while (current?.Next != Tail)
+					current = current?.Next;
+				current.Next = null;
+				Tail = current;
+			}
+		}
+
+		Count--;
 	}
 }
