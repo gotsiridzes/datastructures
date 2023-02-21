@@ -1,10 +1,12 @@
-﻿namespace LinkedList;
+﻿using System.Collections;
+
+namespace LinkedList;
 
 /// <summary>
 /// Singly linked list implementation, able to add, find, remove and enumerate
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public class LinkedList<T>
+public class LinkedList<T> : IEnumerable<T>
 {
 	/// <summary>
 	/// First element of list, null if list is empty
@@ -63,8 +65,8 @@ public class LinkedList<T>
 			else
 			{
 				var current = Head;
-				while (current?.Next != Tail)
-					current = current?.Next;
+				while (current!.Next != Tail)
+					current = current.Next;
 				current.Next = null;
 				Tail = current;
 			}
@@ -77,9 +79,24 @@ public class LinkedList<T>
 	{
 		if (Count != 0)
 		{
-			Head = Head?.Next;
+			Head = Head!.Next;
 			Count--;
 			if (Count == 0) Tail = null;
 		}
 	}
+
+	public IEnumerator<T> GetEnumerator()
+	{
+		if (Count != 0)
+		{
+			var current = Head;
+			while (current!.Next != null)
+			{
+				yield return current.Value!;
+				current = current.Next;
+			}
+		}
+	}
+
+	IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 }
