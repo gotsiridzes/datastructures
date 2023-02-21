@@ -58,4 +58,35 @@ public class RemoveTest
 		Assert.Null(list.Head);
 		Assert.Null(list.Tail);
 	}
+
+	[Theory]
+	[InlineData(new int[] { 0, 1, 2, 3 }, 10)]
+	[InlineData(new int[] { 0, 10 }, 5)]
+	public void Remove_Missing(int[] testData, int value)
+	{
+		LinkedList<int> list = new LinkedList<int>();
+		foreach (int data in testData)
+		{
+			list.AddLast(new LinkedListNode<int>(data));
+		}
+
+		Assert.False(list.Remove(value), "Nothing should have been removed");
+		Assert.Equal(testData.Length, list.Count);
+	}
+
+	[Theory]
+	[InlineData(new int[] { 10 }, 10)]
+	[InlineData(new int[] { 10, 0 }, 10)]
+	[InlineData(new int[] { 0, 10 }, 10)]
+	public void Remove_Found(int[] testData, int value)
+	{
+		LinkedList<int> list = new LinkedList<int>();
+		foreach (int data in testData)
+		{
+			list.AddLast(new LinkedListNode<int>(data));
+		}
+
+		Assert.True(list.Remove(value));
+		Assert.Equal(testData.Length - 1, list.Count);
+	}
 }
