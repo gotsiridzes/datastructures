@@ -1,11 +1,13 @@
-﻿namespace LinkedList.Tests.SinglyLinkedList;
+﻿using LinkedList.SinglyLinkedList;
+
+namespace LinkedList.Tests.SinglyLinkedList;
 
 public class RemoveTest
 {
 	[Fact]
 	public void RemoveLast_Ten_Nodes()
 	{
-		LinkedList<int> list = new LinkedList<int>();
+		SinglyLinkedList<int> list = new SinglyLinkedList<int>();
 		for (int i = 0; i < 10; i++)
 		{
 			list.AddFirst(i);
@@ -25,7 +27,7 @@ public class RemoveTest
 	[Fact]
 	public void RemoveFirstLast_Empty_Lists()
 	{
-		LinkedList<int> list = new LinkedList<int>();
+		SinglyLinkedList<int> list = new SinglyLinkedList<int>();
 		Assert.Equal(0, list.Count);
 		Assert.Null(list.Head);
 		Assert.Null(list.Tail);
@@ -44,7 +46,7 @@ public class RemoveTest
 	[Fact]
 	public void RemoveFirstLast_One_Node()
 	{
-		LinkedList<int> list = new LinkedList<int>();
+		SinglyLinkedList<int> list = new SinglyLinkedList<int>();
 
 		list.AddFirst(10);
 		list.RemoveFirst();
@@ -64,10 +66,10 @@ public class RemoveTest
 	[InlineData(new int[] { 0, 10 }, 5)]
 	public void Remove_Missing(int[] testData, int value)
 	{
-		LinkedList<int> list = new LinkedList<int>();
+		SinglyLinkedList<int> list = new SinglyLinkedList<int>();
 		foreach (int data in testData)
 		{
-			list.AddLast(new LinkedListNode<int>(data));
+			list.AddLast(new SinglyLinkedListNode<int>(data));
 		}
 
 		Assert.False(list.Remove(value), "Nothing should have been removed");
@@ -80,10 +82,10 @@ public class RemoveTest
 	[InlineData(new int[] { 0, 10 }, 10)]
 	public void Remove_Found(int[] testData, int value)
 	{
-		LinkedList<int> list = new LinkedList<int>();
+		SinglyLinkedList<int> list = new SinglyLinkedList<int>();
 		foreach (int data in testData)
 		{
-			list.AddLast(new LinkedListNode<int>(data));
+			list.AddLast(new SinglyLinkedListNode<int>(data));
 		}
 
 		Assert.True(list.Remove(value));

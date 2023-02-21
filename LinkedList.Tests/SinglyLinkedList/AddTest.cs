@@ -1,4 +1,6 @@
-﻿namespace LinkedList.Tests.SinglyLinkedList;
+﻿using LinkedList.SinglyLinkedList;
+
+namespace LinkedList.Tests.SinglyLinkedList;
 
 public class AddTest
 {
@@ -8,7 +10,7 @@ public class AddTest
 	[InlineData(new int[] { 0, 1, 3 })]
 	public static void Add_First_Values(int[] values)
 	{
-		var result = new LinkedList<int>();
+		var result = new SinglyLinkedList<int>();
 		foreach (var item in values)
 			result.AddFirst(item);
 
@@ -25,9 +27,9 @@ public class AddTest
 	[InlineData(new int[] { 0, 1, 3,1,2,3,4,5,6,7,87888,88,8,7,6,5,4,4444444,333333 })]
 	public static void Add_First_Node_Values(int[] values)
 	{
-		var result = new LinkedList<int>();
+		var result = new SinglyLinkedList<int>();
 		foreach (var item in values)
-			result.AddFirst(new LinkedListNode<int>(item));
+			result.AddFirst(new SinglyLinkedListNode<int>(item));
 
 		Assert.Equal(values.Length, result.Count);
 
@@ -44,9 +46,9 @@ public class AddTest
 	[InlineData(new int[] { 0, 1, 3, 1, 2, 3, 4, 5, 6, 7, 87888, 88, 8, 7, 6, 5, 4, 4444444, 333333 })]
 	public static void Add_Last_Node_Values(int[] values)
 	{
-		var result = new LinkedList<int>();
+		var result = new SinglyLinkedList<int>();
 		foreach (var item in values)
-			result.AddLast(new LinkedListNode<int>(item));
+			result.AddLast(new SinglyLinkedListNode<int>(item));
 
 		Assert.Equal(values.Length, result.Count);
 

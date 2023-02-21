@@ -86,7 +86,7 @@ public class BinaryTree<T> :
 		}
 
 		// 2. If current's right child has no left child, then current's right child replaces current node;
-		if (current.Right.Left == null)
+		if (current!.Right.Left == null)
 		{
 			current.Right.Left = current.Left;
 
